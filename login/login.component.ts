@@ -36,15 +36,32 @@ export class LoginComponent {
     this.authService.login(this.email, this.password).subscribe({
       next: (success) => {
         if (success) {
-          this.router.navigate(['/']); // Redirection vers la page d'accueil en cas de succès
+          const role = localStorage.getItem('role');
+  
+          switch (role) {
+            case 'ADMIN':
+              this.router.navigate(['/dashboard']);
+              break;
+            case 'GUIDE':
+              this.router.navigate(['/blog']);
+              break;
+            case 'PARTNER':
+              this.router.navigate(['/partner']);
+              break;
+            case 'USER':
+            default:
+              this.router.navigate(['/']);
+              break;
+          }
+  
         } else {
-          this.errorMessage = 'Identifiants invalides'; // Afficher un message d'erreur
+          this.errorMessage = 'Identifiants invalides';
         }
       },
       error: (err) => {
-        this.errorMessage = 'Erreur de connexion. Veuillez réessayer.'; // Afficher l'erreur générale si la requête échoue
+        this.errorMessage = 'Erreur de connexion. Veuillez réessayer.';
         console.error('Erreur de connexion :', err);
       }
     });
   }
-}
+}  
