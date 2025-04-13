@@ -43,7 +43,7 @@ export class LoginComponent {
               this.router.navigate(['/dashboard']);
               break;
             case 'GUIDE':
-              this.router.navigate(['/blog']);
+              this.router.navigate(['/reservationsbyguide']);
               break;
             case 'PARTNER':
               this.router.navigate(['/partner']);
@@ -53,9 +53,9 @@ export class LoginComponent {
               this.router.navigate(['/']);
               break;
           }
-  
         } else {
-          this.errorMessage = 'Identifiants invalides';
+          // Utiliser le message d'erreur provenant du service, par exemple "Account is pending approval"
+          this.errorMessage = this.authService.errorMessage || 'Identifiants invalides';
         }
       },
       error: (err) => {
@@ -64,4 +64,5 @@ export class LoginComponent {
       }
     });
   }
+  
 }  

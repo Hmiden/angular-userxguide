@@ -11,15 +11,17 @@ import { User } from 'src/app/models/user.model';  // Assurez-vous que User est 
 export class BlogComponent implements OnInit {
   user: User | null = null;  // Définir la variable 'user'
 
-  constructor(private authService: AuthService, private router: Router) {}
+  email: string | null = null;
 
-  ngOnInit(): void {
-    // Récupérer l'utilisateur actuel via AuthService
-    this.user = this.authService.getCurrentUser();
-  
-    if (!this.user?.id) {
-      console.error('User ID is not available.');
-    }
+  constructor(private router: Router, private authService: AuthService) {}
+
+  ngOnInit() {
+    this.email = this.authService.getCurrentUserEmail();
+  }
+
+  get isUserManagementPage(): boolean {
+    return this.router.url.includes('/list-users') || 
+           this.router.url.includes('/add-user');
   }
   
 
@@ -30,4 +32,9 @@ export class BlogComponent implements OnInit {
       console.error('User is not authenticated');
     }
   }
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']); // Redirection après déconnexion
+  }
+
 }  

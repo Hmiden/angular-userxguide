@@ -1,4 +1,37 @@
 /* Container */
+
+.spinner-container {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  
+  .spinner-border {
+    width: 4rem;
+    height: 4rem;
+    border-width: 0.3rem;
+    border-top-color: #ff7e5f;
+    animation: spin 1s infinite linear;
+  }
+  
+  .loading-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #2c3e50;
+    margin-top: 15px;
+  }
+  
+  /* Spin Animation */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
 .container {
     max-width: 1200px;
     margin: auto;
@@ -58,7 +91,6 @@
   .guide-name {
     font-size: 1.3rem;
     font-weight: bold;
-    color: #2c3e50;
     margin-bottom: 10px;
   }
   
@@ -132,7 +164,6 @@
   }
   
   .btn-outline-primary:hover {
-    background-color: #3498db;
     color: white;
   }
   

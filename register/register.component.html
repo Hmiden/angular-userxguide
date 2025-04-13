@@ -24,6 +24,9 @@
       </div>        
     </div>
   
+    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+<p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
     <!-- Navigation Transparente -->
     <div class="main_nav transparent-nav">
       <div class="container">

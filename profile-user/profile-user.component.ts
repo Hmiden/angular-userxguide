@@ -25,8 +25,8 @@ export class ProfileUserComponent implements OnInit {
 
   ngOnInit(): void {
     // Récupérer l'ID de l'utilisateur connecté à partir du service AuthService
-    const currentUser = this.authService.getCurrentUser();
-    if (currentUser) {
+    const currentUser = this.authService.getCurrentUserEmail
+   /* if (currentUser) {
       this.userId = currentUser.id; // On récupère l'ID ici
     }
 
@@ -41,13 +41,13 @@ export class ProfileUserComponent implements OnInit {
     });
 
     this.isLoading = false;
-  }
+  }*/
 
-  updateProfile(): void {
+ /* updateProfile(): void {
     if (this.profileForm.invalid) {
       return;
     }
-
+*/
     const formData = this.profileForm.value;
     const updatedUser = {
       id: this.userId, // L'ID de l'utilisateur est maintenant inclus
