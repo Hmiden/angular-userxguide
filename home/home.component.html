@@ -66,7 +66,7 @@
 								<li class="main_nav_item"><a href="/about">about us</a></li>
 								<li class="main_nav_item"><a href="/guide">guide</a></li>
 
-								<li class="main_nav_item"><a href="/offers">offers</a></li>
+								<li class="main_nav_item"><a href="/gastronomies">Gastronomy</a></li>
 								<li class="main_nav_item"><a href="/news">news</a></li>
 								<li class="main_nav_item"><a href="/contact">contact</a></li>
 							</ul>
@@ -96,7 +96,8 @@
 						</div>
 
 						<form id="search_form" class="search_form bez_1">
-							<input type="search" class="search_content_input bez_1">
+							<label for="search_input" class="sr-only">Search</label>
+							<input type="search" id="search_input" class="search_content_input bez_1" placeholder="Search here">
 						</form>
 
 						<div class="hamburger">
@@ -122,6 +123,32 @@
 			</ul>
 		</div>
 	</div>
+	<!-- Floating Chat Button -->
+<div class="chat-bubble" (click)="toggleChat()" *ngIf="!chatVisible">
+	💬
+  </div>
+  
+  <!-- Floating Chat Window -->
+  <div class="chat-window" *ngIf="chatVisible">
+	<div class="chat-header">
+	  <span>Gemini Chat 🤖</span>
+	  <button class="close-btn" (click)="toggleChat()">✖</button>
+	</div>
+  
+	<div class="chat-messages">
+	  <div *ngFor="let msg of conversation" class="message">
+		<p><strong>Vous:</strong> {{ msg.user }}</p>
+		<p><strong>Bot:</strong> {{ msg.bot }}</p>
+	  </div>
+	</div>
+  
+	<div class="chat-input">
+	  <input [(ngModel)]="userMessage" placeholder="Écris ton message..." (keyup.enter)="sendMessage()" />
+	  <button (click)="sendMessage()" [disabled]="isLoading">{{ isLoading ? '...' : 'Envoyer' }}</button>
+	</div>
+  </div>
+  
+	  
 
 	<!-- Home -->
 
@@ -255,7 +282,7 @@
 						<form action="#" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 							<div class="search_item">
 								<div>destination</div>
-								<input type="text" class="destination search_input" required="required">
+								<input type="text" class="destination search_input" required="required" title="Enter your destination" placeholder="Enter your destination">
 							</div>
 							<div class="search_item">
 								<div>check in</div>
@@ -267,7 +294,7 @@
 							</div>
 							<div class="search_item">
 								<div>adults</div>
-								<select name="adults" id="adults_1" class="dropdown_item_select search_input">
+								<select name="adults" id="adults_1" class="dropdown_item_select search_input" title="Select number of adults">
 									<option>01</option>
 									<option>02</option>
 									<option>03</option>
@@ -275,7 +302,7 @@
 							</div>
 							<div class="search_item">
 								<div>children</div>
-								<select name="children" id="children_1" class="dropdown_item_select search_input">
+								<select name="children" id="children_1" class="dropdown_item_select search_input" title="Select number of children">
 									<option>0</option>
 									<option>02</option>
 									<option>03</option>
@@ -291,7 +318,7 @@
 						<form action="#" id="search_form_2" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 							<div class="search_item">
 								<div>destination</div>
-								<input type="text" class="destination search_input" required="required">
+								<input type="text" class="destination search_input" required="required" title="Enter your destination" placeholder="Enter your destination">
 							</div>
 							<div class="search_item">
 								<div>check in</div>
@@ -303,7 +330,7 @@
 							</div>
 							<div class="search_item">
 								<div>adults</div>
-								<select name="adults" id="adults_2" class="dropdown_item_select search_input">
+								<select name="adults" id="adults_2" class="dropdown_item_select search_input" title="Select number of adults">
 									<option>01</option>
 									<option>02</option>
 									<option>03</option>
@@ -311,7 +338,7 @@
 							</div>
 							<div class="search_item">
 								<div>children</div>
-								<select name="children" id="children_2" class="dropdown_item_select search_input">
+								<select name="children" id="children_2" class="dropdown_item_select search_input" title="Select number of children">
 									<option>0</option>
 									<option>02</option>
 									<option>03</option>
@@ -327,7 +354,7 @@
 						<form action="#" id="search_form_3" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 							<div class="search_item">
 								<div>destination</div>
-								<input type="text" class="destination search_input" required="required">
+								<input type="text" class="destination search_input" required="required" title="Enter your destination" placeholder="Enter your destination">
 							</div>
 							<div class="search_item">
 								<div>check in</div>
@@ -339,7 +366,7 @@
 							</div>
 							<div class="search_item">
 								<div>adults</div>
-								<select name="adults" id="adults_3" class="dropdown_item_select search_input">
+								<select name="adults" id="adults_3" class="dropdown_item_select search_input" title="Select number of adults">
 									<option>01</option>
 									<option>02</option>
 									<option>03</option>
@@ -347,7 +374,7 @@
 							</div>
 							<div class="search_item">
 								<div>children</div>
-								<select name="children" id="children_3" class="dropdown_item_select search_input">
+								<select name="children" id="children_3" class="dropdown_item_select search_input" title="Select number of children">
 									<option>0</option>
 									<option>02</option>
 									<option>03</option>
@@ -363,7 +390,7 @@
 						<form action="#" id="search_form_4" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 							<div class="search_item">
 								<div>destination</div>
-								<input type="text" class="destination search_input" required="required">
+								<input type="text" class="destination search_input" required="required" title="Enter your destination" placeholder="Enter your destination">
 							</div>
 							<div class="search_item">
 								<div>check in</div>
@@ -375,7 +402,7 @@
 							</div>
 							<div class="search_item">
 								<div>adults</div>
-								<select name="adults" id="adults_4" class="dropdown_item_select search_input">
+								<select name="adults" id="adults_4" class="dropdown_item_select search_input" title="Select number of adults">
 									<option>01</option>
 									<option>02</option>
 									<option>03</option>
@@ -383,7 +410,7 @@
 							</div>
 							<div class="search_item">
 								<div>children</div>
-								<select name="children" id="children_4" class="dropdown_item_select search_input">
+								<select name="children" id="children_4" class="dropdown_item_select search_input" title="Select number of children">
 									<option>0</option>
 									<option>02</option>
 									<option>03</option>
@@ -399,7 +426,7 @@
 						<form action="#" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 							<div class="search_item">
 								<div>destination</div>
-								<input type="text" class="destination search_input" required="required">
+								<input type="text" class="destination search_input" required="required" title="Enter your destination" placeholder="Enter your destination">
 							</div>
 							<div class="search_item">
 								<div>check in</div>
@@ -411,7 +438,7 @@
 							</div>
 							<div class="search_item">
 								<div>adults</div>
-								<select name="adults" id="adults_5" class="dropdown_item_select search_input">
+								<select name="adults" id="adults_5" class="dropdown_item_select search_input" title="Select number of adults">
 									<option>01</option>
 									<option>02</option>
 									<option>03</option>
@@ -419,7 +446,7 @@
 							</div>
 							<div class="search_item">
 								<div>children</div>
-								<select name="children" id="children_5" class="dropdown_item_select search_input">
+								<select name="children" id="children_5" class="dropdown_item_select search_input" title="Select number of children">
 									<option>0</option>
 									<option>02</option>
 									<option>03</option>
@@ -435,7 +462,7 @@
 						<form action="#" id="search_form_6" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 							<div class="search_item">
 								<div>destination</div>
-								<input type="text" class="destination search_input" required="required">
+								<input type="text" class="destination search_input" required="required" title="Enter your destination" placeholder="Enter your destination">
 							</div>
 							<div class="search_item">
 								<div>check in</div>
@@ -447,7 +474,7 @@
 							</div>
 							<div class="search_item">
 								<div>adults</div>
-								<select name="adults" id="adults_6" class="dropdown_item_select search_input">
+								<select name="adults" id="adults_6" class="dropdown_item_select search_input" title="Select number of adults">
 									<option>01</option>
 									<option>02</option>
 									<option>03</option>
@@ -455,7 +482,7 @@
 							</div>
 							<div class="search_item">
 								<div>children</div>
-								<select name="children" id="children_6" class="dropdown_item_select search_input">
+								<select name="children" id="children_6" class="dropdown_item_select search_input" title="Select number of children">
 									<option>0</option>
 									<option>02</option>
 									<option>03</option>
@@ -1269,7 +1296,6 @@
 				<div class="col-lg-3 order-lg-1 order-2  ">
 					<div class="copyright_content d-flex flex-row align-items-center">
 						<div><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
 					</div>
 				</div>

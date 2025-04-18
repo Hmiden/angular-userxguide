@@ -5,7 +5,7 @@
       <div class="container">
         <div class="row">
           <div class="col d-flex flex-row">
-            <div class="phone">+45 345 3324 56789</div>
+            <div class="phone">+216 99830041</div>
             <div class="social">
               <ul class="social_list">
                 <li class="social_list_item"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
@@ -17,7 +17,6 @@
               </ul>
             </div>
             <div class="user_box ml-auto">
-              <div class="user_box_login user_box_link"><a routerLink="/login">login</a></div>
             </div>
           </div>
         </div>
@@ -33,7 +32,6 @@
         <div class="row">
           <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
             <div class="logo_container">
-              <div class="logo"><a href="#"><img src="assets/frontend/images/logo.png" alt="">travelix</a></div>
             </div>
             <div class="hamburger">
               <i class="fa fa-bars trans_200"></i>
@@ -71,7 +69,8 @@
             </div>
           </div>
           
-          <div class="input-group">
+          <!-- Email field with consistent bottom margin -->
+          <div class="input-group spaced-field">
             <i class="fa fa-envelope"></i>
             <input type="email" formControlName="email" id="email" placeholder="Email Address" required>
             <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
@@ -79,7 +78,8 @@
             </div>
           </div>
           
-          <div class="input-group">
+          <!-- Password field with consistent margins -->
+          <div class="input-group spaced-field">
             <i class="fa fa-lock"></i>
             <input type="password" formControlName="password" id="password" placeholder="Password" required>
             <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">
@@ -87,7 +87,8 @@
             </div>
           </div>
           
-          <div class="form-row">
+          <!-- Phone/Passport row with top margin -->
+          <div class="form-row spaced-field">
             <div class="input-group">
               <i class="fa fa-phone"></i>
               <input type="tel" formControlName="nTel" id="phone" placeholder="Phone Number" required>
@@ -114,9 +115,7 @@
                 <label for="role_partner">Partner</label>
               </div>
             </div>
-          </div>
-          
-          <button type="submit" class="btn-register" [disabled]="registerForm.invalid">Create Account</button>
+          </div>          <button type="submit" class="btn-register" [disabled]="registerForm.invalid">Create Account</button>
           
           <div *ngIf="errorMessage" class="error-message" style="margin-top: 15px; text-align: center;">
             {{ errorMessage }}
@@ -132,7 +131,7 @@
     <!-- Footer -->
     <footer>
       <div class="container">
-        <p>&copy; 2025 Travelix. All rights reserved.</p>
+        <p>&copy; 2025 MalaTrip. All rights reserved.</p>
       </div>
     </footer>
   </div>

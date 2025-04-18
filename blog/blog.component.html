@@ -1,15 +1,12 @@
 <div class="container mt-4">
-    <h2>Bienvenue sur votre espace Guide</h2>
+    <h2>Bienvenue sur votre espace User</h2>
   
     <!-- Autres contenus du blog -->
   
    <!-- Exemple de bouton avec RouterLink pour la modification du profil -->
-   <a *ngIf="user" [routerLink]="['/profile', user.id]" class="btn btn-warning btn-sm">Modifier mes coordonnées</a>
-   <div class="header">
-    <div class="user-info" style="float: right; padding: 10px;">
-      Connecté en tant que : <strong>{{ email }}</strong>
-      <button (click)="logout()">Déconnexion</button>
+      <div class="user-info" style="float: right; padding: 10px;">
+        Connecté en tant que : <strong>{{ email }}</strong>
+        <button (click)="logout()">Déconnexion</button>
     </div>
-  </div>
-  </div>
-  
+    </div>
+ 

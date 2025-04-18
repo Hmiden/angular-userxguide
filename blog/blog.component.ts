@@ -12,16 +12,18 @@ export class BlogComponent implements OnInit {
   user: User | null = null;  // Définir la variable 'user'
 
   email: string | null = null;
+  userId: string | null = null; // Define the userId property
 
   constructor(private router: Router, private authService: AuthService) {}
-
   ngOnInit() {
     this.email = this.authService.getCurrentUserEmail();
-  }
-
-  get isUserManagementPage(): boolean {
-    return this.router.url.includes('/list-users') || 
-           this.router.url.includes('/add-user');
+    if (this.email) {
+      this.authService.getUserIdByEmail(this.email).subscribe(id => {
+        this.userId = id.toString();
+        console.log("User ID:", this.userId);
+      });
+    }
+  
   }
   
 
